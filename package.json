@@ -16,10 +16,10 @@
   },
   "keywords": [
     "clock",
-    "web",
-    "component",
-    "custom",
-    "element",
+    "web component",
+    "web components",
+    "custom element",
+    "custom elements",
     "component"
   ],
   "author": "Thomas Schuster <twihno@gmail.com>",
