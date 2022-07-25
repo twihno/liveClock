@@ -18,12 +18,12 @@ A simple realtime clock using Web Components.
 ```
 
 Available Parameters:
-| | |
-|-|-|
-|`twelve-hours`|Use 12h format (AM/PM)|
-|`seconds-visible`|Show seconds|
-|`blinking`|The separator blinks every second|
-|`separator`|Character between hours/minutes/seconds|
+| | |default|
+|-|-|-|
+|`twelve-hours`|Use 12h format (AM/PM)|false|
+|`seconds-visible`|Show seconds|false|
+|`blinking`|The separator blinks every second|false|
+|`separator`|Character between hours/minutes/seconds|:|
 
 ### Styling
 
