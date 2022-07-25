@@ -2,8 +2,6 @@
 
 ## [![Node.js Package](https://github.com/twihno/liveClock/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/twihno/liveClock/actions/workflows/npm-publish.yml)
 
----
-
 A simple realtime clock using Web Components.
 
 ## Usage
