@@ -1,8 +1,13 @@
 # liveClock
 
-## [![Node.js Package](https://github.com/twihno/liveClock/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/twihno/liveClock/actions/workflows/npm-publish.yml)
+[![Node.js Package](https://github.com/twihno/liveClock/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/twihno/liveClock/actions/workflows/npm-publish.yml)
+![GitHub](https://img.shields.io/github/license/twihno/liveclock)
+![npm](https://img.shields.io/npm/v/liveclock)
 
 A simple realtime clock using Web Components.
+
+## Examples
+https://twihno.github.io/liveClock/
 
 ## Usage
 
