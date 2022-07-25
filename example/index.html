@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Clock Demo</title>
+    <style>
+      :root {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI Variable", "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+          "Open Sans", "Helvetica Neue", sans-serif;
+        color-scheme: light dark;
+        text-align: center;
+      }
+
+      .styled {
+        font-size: 1.5rem;
+        font-family: monospace, monospace;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Live clock demo</h1>
+    <p>Made with ❤️ by Thomas Schuster</p>
+
+    <p>
+      This (rather simple) page shows the functionality of the
+      <a
+        href="https://www.npmjs.com/package/liveclock"
+        referrerpolicy="no-refferer"
+        >liveclock</a
+      >
+      package.
+    </p>
+    <p>
+      Repository:
+      <a href="https://github.com/twihno/liveClock" referrerpolicy="no-referrer"
+        >https://github.com/twihno/liveClock</a
+      >
+    </p>
+
+    <h2>Standard</h2>
+    <live-clock></live-clock>
+
+    <h2>Blinking</h2>
+    <live-clock blinking></live-clock>
+
+    <h2>With seconds</h2>
+    <live-clock seconds-visible></live-clock><br />
+    <live-clock seconds-visible blinking></live-clock>
+
+    <h2>12h format</h2>
+    <live-clock twelve-hours></live-clock><br />
+    <live-clock twelve-hours blinking></live-clock><br />
+    <live-clock twelve-hours blinking seconds-visible></live-clock>
+
+    <h2>Custom separator</h2>
+    <live-clock seconds-visible separator="❤️"></live-clock><br />
+    <live-clock seconds-visible blinking separator="❤️"></live-clock>
+
+    <h2>Styled</h2>
+    <live-clock seconds-visible class="styled"></live-clock><br />
+    <live-clock seconds-visible blinking class="styled"></live-clock
+    ><br /><br />
+    <live-clock twelve-hours blinking class="styled"></live-clock><br />
+    <live-clock
+      seconds-visible
+      twelve-hours
+      blinking
+      class="styled"
+    ></live-clock>
+
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/liveclock@latest/dist/module.js"
+    ></script>
+  </body>
+</html>
