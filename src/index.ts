@@ -6,7 +6,6 @@ export default class LiveClock extends HTMLElement {
     separator: ":",
   };
 
-  private currentFrameSeperatorVisible = true;
   private timeoutHandler: number | null = null;
   private lastText = "";
 
@@ -94,7 +93,7 @@ export default class LiveClock extends HTMLElement {
       currentTime.getSeconds(),
       this.config.secondsVisible,
       this.config.separator,
-      this.config.blinking ? this.currentFrameSeperatorVisible : true,
+      this.config.blinking ? currentTime.getSeconds() % 2 === 0 : true,
       this.config.twelveHours
     );
 
@@ -104,9 +103,6 @@ export default class LiveClock extends HTMLElement {
     }
 
     if (this.config.blinking || this.config.secondsVisible) {
-      if (this.config.blinking) {
-        this.currentFrameSeperatorVisible = !this.currentFrameSeperatorVisible;
-      }
       this.timeoutHandler = setTimeout(
         this.updateContent.bind(this),
         1000 - currentTime.getMilliseconds()
@@ -123,7 +119,7 @@ export default class LiveClock extends HTMLElement {
 
   private generateText(
     hours: number,
-    minues: number,
+    minutes: number,
     seconds: number,
     secondsVisible: boolean,
     separator: string,
@@ -145,7 +141,7 @@ export default class LiveClock extends HTMLElement {
       timeString += hours.toString().padStart(2, "0");
     }
 
-    timeString += `${separatorFormatted}${minues.toString().padStart(2, "0")}`;
+    timeString += `${separatorFormatted}${minutes.toString().padStart(2, "0")}`;
 
     if (secondsVisible) {
       timeString += `${separatorFormatted}${seconds
