@@ -7,14 +7,15 @@
 A simple realtime clock using Web Components.
 
 ## Examples
+
 https://twihno.github.io/liveClock/
 
 ## Usage
 
 ```html
 <live-clock
-  twelve-hours="false"
-  seconds-visible="true"
+  twelvehours="false"
+  secondsvisible="true"
   blinking="true"
   separator=":"
 ></live-clock>
@@ -23,8 +24,8 @@ https://twihno.github.io/liveClock/
 Available Parameters:
 | | |default|
 |-|-|-|
-|`twelve-hours`|Use 12h format (AM/PM)|false|
-|`seconds-visible`|Show seconds|false|
+|`twelvehours`|Use 12h format (AM/PM)|false|
+|`secondsvisible`|Show seconds|false|
 |`blinking`|The separator blinks every second|false|
 |`separator`|Character between hours/minutes/seconds|:|
 

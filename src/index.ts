@@ -98,7 +98,6 @@ export default class LiveClock extends HTMLElement {
     } else {
       let delta =
         (60 - currentTime.getSeconds()) * 1000 - currentTime.getMilliseconds();
-      // console.log(delta);
       if (delta > 1000) {
         delta -= 1000;
       }
