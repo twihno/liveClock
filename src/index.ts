@@ -1,7 +1,11 @@
+function isEmptyOrTrue(value: string | null) {
+  return value === "" || value === "true";
+}
+
 export default class LiveClock extends HTMLElement {
-  config = {
-    twelveHours: false,
-    secondsVisible: false,
+  private config = {
+    twelvehours: false,
+    secondsvisible: false,
     blinking: false,
     separator: ":",
   };
@@ -10,7 +14,7 @@ export default class LiveClock extends HTMLElement {
   private lastText = "";
 
   static get observedAttributes() {
-    return ["twelve-hours", "seconds-visible", "blinking", "separator"];
+    return ["twelvehours", "secondsvisible", "blinking", "separator"];
   }
 
   constructor() {
@@ -31,39 +35,23 @@ export default class LiveClock extends HTMLElement {
   }
 
   private updateConfig() {
-    if (
-      this.getAttribute("twelve-hours") === "" ||
-      this.getAttribute("twelve-hours") === "true"
-    ) {
-      this.config.twelveHours = true;
-    } else {
-      this.config.twelveHours = false;
-      if (this.getAttribute("twelve-hours") !== "false") {
-        this.setAttribute("twelve-hours", "false");
-      }
-    }
+    const boolAttributes = [
+      "twelvehours",
+      "secondsvisible",
+      "blinking",
+    ] as const;
 
-    if (
-      this.getAttribute("seconds-visible") === "" ||
-      this.getAttribute("seconds-visible") === "true"
-    ) {
-      this.config.secondsVisible = true;
-    } else {
-      this.config.secondsVisible = false;
-      if (this.getAttribute("seconds-visible") !== "false") {
-        this.setAttribute("seconds-visible", "false");
-      }
-    }
-
-    if (
-      this.getAttribute("blinking") === "" ||
-      this.getAttribute("blinking") === "true"
-    ) {
-      this.config.blinking = true;
-    } else {
-      this.config.blinking = false;
-      if (this.getAttribute("blinking") !== "false") {
-        this.setAttribute("blinking", "false");
+    for (const attr of boolAttributes) {
+      if (isEmptyOrTrue(this.getAttribute(attr))) {
+        this.config[attr] = true;
+        if (this.getAttribute(attr) !== "true") {
+          this.setAttribute(attr, "true");
+        }
+      } else {
+        this.config[attr] = false;
+        if (this.getAttribute(attr) !== "false") {
+          this.setAttribute(attr, "false");
+        }
       }
     }
 
@@ -91,10 +79,10 @@ export default class LiveClock extends HTMLElement {
       currentTime.getHours(),
       currentTime.getMinutes(),
       currentTime.getSeconds(),
-      this.config.secondsVisible,
+      this.config.secondsvisible,
       this.config.separator,
       this.config.blinking ? currentTime.getSeconds() % 2 === 0 : true,
-      this.config.twelveHours
+      this.config.twelvehours
     );
 
     if (newText !== this.lastText) {
@@ -102,18 +90,19 @@ export default class LiveClock extends HTMLElement {
       this.lastText = newText;
     }
 
-    if (this.config.blinking || this.config.secondsVisible) {
+    if (this.config.blinking || this.config.secondsvisible) {
       this.timeoutHandler = setTimeout(
         this.updateContent.bind(this),
         1000 - currentTime.getMilliseconds()
       );
     } else {
-      this.timeoutHandler = setTimeout(
-        this.updateContent.bind(this),
-        (60 - currentTime.getSeconds()) * 1000 +
-          1000 -
-          currentTime.getMilliseconds()
-      );
+      let delta =
+        (60 - currentTime.getSeconds()) * 1000 - currentTime.getMilliseconds();
+      // console.log(delta);
+      if (delta > 1000) {
+        delta -= 1000;
+      }
+      this.timeoutHandler = setTimeout(this.updateContent.bind(this), delta);
     }
   }
 
