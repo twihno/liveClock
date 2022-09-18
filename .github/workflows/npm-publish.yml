@@ -23,13 +23,21 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
-      - run: npm run build
-      - run: npm publish
+      - name: Install pnpm and dependencies
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7
+          run_install: true
+      - name: Build package
+        run: pnpm build
+      - name: Publish package
+        run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
