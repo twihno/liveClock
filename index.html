@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>liveClock demo</title>
     <style>
@@ -47,29 +46,23 @@
     <live-clock blinking></live-clock>
 
     <h2>With seconds</h2>
-    <live-clock seconds-visible></live-clock><br />
-    <live-clock seconds-visible blinking></live-clock>
+    <live-clock secondsvisible></live-clock><br />
+    <live-clock secondsvisible blinking></live-clock>
 
     <h2>12h format</h2>
-    <live-clock twelve-hours></live-clock><br />
-    <live-clock twelve-hours blinking></live-clock><br />
-    <live-clock twelve-hours blinking seconds-visible></live-clock>
+    <live-clock twelvehours></live-clock><br />
+    <live-clock twelvehours blinking></live-clock><br />
+    <live-clock twelvehours blinking secondsvisible></live-clock>
 
     <h2>Custom separator</h2>
-    <live-clock seconds-visible separator="❤️"></live-clock><br />
-    <live-clock seconds-visible blinking separator="❤️"></live-clock>
+    <live-clock secondsvisible separator="❤️"></live-clock><br />
+    <live-clock secondsvisible blinking separator="❤️"></live-clock>
 
     <h2>Styled</h2>
-    <live-clock seconds-visible class="styled"></live-clock><br />
-    <live-clock seconds-visible blinking class="styled"></live-clock
-    ><br /><br />
-    <live-clock twelve-hours blinking class="styled"></live-clock><br />
-    <live-clock
-      seconds-visible
-      twelve-hours
-      blinking
-      class="styled"
-    ></live-clock>
+    <live-clock secondsvisible class="styled"></live-clock><br />
+    <live-clock secondsvisible blinking class="styled"></live-clock><br /><br />
+    <live-clock twelvehours blinking class="styled"></live-clock><br />
+    <live-clock secondsvisible twelvehours blinking class="styled"></live-clock>
 
     <script
       type="module"
